@@ -1,130 +1,51 @@
-# Changelog
+﻿# 更新日志
 
-All notable changes to this package will be documented in this file.
+> 此文件记录了该软件包所有重要的变更
+> 文件格式基于 [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) 更新日志规范，且此项目版本号遵循 [语义化版本](http://semver.org/spec/v2.0.0.html) 规范
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
-and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+## [2.0.0] - 2025-12-25
+### 新增
+- **音效系统 (`SFXManager`)**:
+    - 添加了 `SERepeatScheme` 枚举，用于处理同一音效重复播放时的策略（全部播放、忽略新的、重播新的）
+    - `SEInfo` 结构体中增加了 `randomGroup`，支持在播放音效时从一组音频中随机选择一个，以增加多样性
+- **背景音乐系统 (`BGMManager`)**:
+    - 添加了带淡入淡出时间的 `Play` 和 `Stop` 方法重载，以实现平滑的音乐过渡
+- **环境音系统**:
+    - 新增了 `AmbientManager` 和 `AmbientRegistrySO`，用于独立管理和播放循环的环境音效
 
-## [3.2.1] - 2023-04-27
+### 更改
+- **项目结构**: 将 BGM、SFX 和新增的 Ambient 功能分别注册到独立的 `ScriptableObject` 中（`BGMInfoRegistrySO`, `SoundEffectRegistrySO`, `AmbientRegistrySO`），使音频资源的管理更加模块化和清晰
 
-* Fixed Newtonsoft DLL when compiling with netstandard 2.0.
+## [1.4.0] - 2025-10-24
+### 新增
+- **`BGMManager`**: 添加了 `interval` 字段，支持在循环播放背景音乐时设置一个固定的播放间隔
 
-## [3.2.0] - 2023-04-19
+### 修复
+- **`BGMManager`**: 修复了在特定条件下，通过 `continuePlayMaxTime` 设置的续播功能无法正确恢复到上次播放进度的问题
 
-* Fixed Newtonsoft DLL public key token so it properly supports assembly strong name.
-* Support Newtonsoft's `JsonSelectSettings.RegexMatchTimeout`.
+## [1.3.0] - 2025-07-31
+### 新增
+- **`AudioManager`**: 添加了 `keepAliveSource`，通过在后台播放一个静音音频来保持 Unity 音频系统始终激活，解决了从无声状态下首次播放音效可能失败的问题
 
-## [3.1.0] - 2023-02-28
+### 更改
+- **项目结构**: 将 `SoundEffectManager` 重命名为 `SFXManager`，以简化命名
+- **依赖关系**: 解除了对外部 `Utilities` 和 `CustomAttribute` 包的强耦合引用
 
-* Updated AOT and Editor DLLs to corresponds to Newtonsoft.Json version 13.0.2
+## [1.2.0] - 2025-07-29
+### 更改
+- **项目结构**: 将所有音频系统脚本移动到 `Assets/Plugins/AudioSystem` 目录下，并添加了 `DreemurrStudio.AudioSystem` 命名空间，使其更符合包管理规范
 
-## [3.0.2] - 2022-03-29
+### 修复
+- **`SFXManager`**: 修复了音效对象池在回收音源实例时没有正确销毁游戏对象，可能导致内存泄漏的问题
 
-* Removed test code from package.
+## [1.1.0] - 2025-03-15
+### 新增
+- **`SFXManager`**: 在 Inspector 面板中暴露了 `maxOverlaySFXNum` 和 `maxWorldSFXNum` 字段，允许根据项目需求限制同时播放的全局音效和世界音效的最大数量
+- **动画事件**: 添加了 `AnimationEvent_Audio` 脚本，提供了 `PlayWorldSFX` 和 `PlayOverlaySFX` 等方法，方便在动画剪辑中直接通过事件来触发音效播放
 
-## [3.0.1] - 2022-02-21
-
-* Updated license file
-
-## [3.0.0] - 2022-01-27
-
-* Updated Documentation
-
-## [3.0.0-preview.1] - 2022-01-25
-
-* Updated AOT and Editor DLLs to corresponds to Newtonsoft.Json version 13.0.1
-* Removed deprecated Portable DLL
-* Updated README
-* Updated Documentation
-
-## [2.0.2] - 2020-10-04
-
-* Updated README
-* Added package signature for validation
-
-## [2.0.1-preview.1] - 2020-11-14
-
-* Updated README and Internal Fixtures
-
-## [2.0.0] - 2020-04-20
-
-### This is the release of *Unity Package Nuget.NewtonsoftJson* v2.0.0.
-
-* Updated dll to AOT compatible version to allow for IL2CPP compilation platform targets
-* Added dll to Portable compatible version to allow for additional platform targets
-* Updated associated Package Documents
-
-## [2.0.0-preview] - 2019-11-14
-
-### This is the preview of *Unity Package Nuget.NewtonsoftJson* v2.0.0-preview.
-
-* Changed dll to AOT compatible version to allow for IL2CPP compilation platform targets
-
-## [1.1.2] - 2019-10-31
-
-### This is the release of *Unity Package Nuget.NewtonsoftJson* v1.1.2.
-
-* Fixed tests for 2018.4.
-
-## [1.1.1] - 2019-10-30
-
-### This is the release of *Unity Package Nuget.NewtonsoftJson* v1.1.1.
-
-* Added some sanity tests to catch issues in the CI.
-
-## [1.1.0] - 2019-10-29
-
-### This is the release of *Unity Package Nuget.NewtonsoftJson* v1.1.0.
-
-* Use .net standard 2.0 version of the dll.
-* Renamed the dll to match the assembly name. Users will need to update their assembly references.
-
-## [1.1.0-preview.1] - 2019-08-09
-
-### This is the first preview of *Unity Package Nuget.Newtonsoft.Json* version 1.1.0.
-
-* Updated to bug fix release 12.0.2 of Newtonsoft Json.
-* Updated package description.
-
-## [1.0.1-preview.2] - 2019-10-02
-
-### This is the second preview release of *Unity Package Nuget.NewtonsoftJson* v1.0.1.
-
-* Use .net standard 2.0 version of the dll.
-
-## [1.0.1-preview.1] - 2019-08-13
-
-### This is the first preview release of *Unity Package Nuget.Newtonsoft.Json* v1.0.1.
-
-* Renamed the dll to match the assembly name. Users will need to update their assembly references.
-
-## [1.0.0] - 2019-08-08
-
-### This is the first release of *Unity Package Nuget.Newtonsoft.Json*.
-
-* No notable changes from the previous preview release.
-
-## [1.0.0-preview.4] - 2019-08-06
-
-### This is the fourth preview release of *Unity Package Nuget.Newtonsoft.Json*.
-
-* Remove the unused asmdef file and make it such that the dll needs to be explicitly included.
-
-## [1.0.0-preview.3] - 2019-07-03
-
-### This is the third preview release of *Unity Package Nuget.Newtonsoft.Json*.
-
-* Update the documentation for the package and the package description to state that this package is for internal Unity
-  use __only__.
-
-## [1.0.0-preview.2] - 2019-06-21
-
-### This is the second preview release of *Unity Package Nuget.NewtonsoftJson*.
-
-* The name of the package has been changed to avoid a naming issue with npm.
-
-## [1.0.0-preview.1] - 2019-06-21
-
-### This is the first preview release of *Unity Package Nuget.NewtonsoftJson*.
-
-* This is the first preview of a the custom Unity package for NewtonsoftJson. Please report any bugs.
+## [1.0.0] - 2025-03-11
+### 新增
+- **初始版本发布**: 提供了完整的音频播放解决方案
+- **`AudioManager`**: 支持通过 `AudioMixer` 控制主音量、BGM、环境音和音效的音量，并支持快照切换
+- **`BGMManager`**: 支持背景音乐的播放、暂停、恢复和停止
+- **`SFXManager`**: 支持使用对象池播放全局音效（2D）和世界音效（3D）

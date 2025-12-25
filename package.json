@@ -1,18 +1,23 @@
 ﻿{
   "name": "com.dreemurrstudio.audiosystem",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "displayName": "通用音频系统",
-  "description": "适用于小型项目的简单音频系统，封装播放背景音乐、环境音、音效的相关功能，便捷地控制与自定义控制",
-  "unity": "2021.3",
+  "description": "为 Unity 项目提供了一套简单但全面清晰的音频解决方案，将音频播放划分为背景音乐（BGM）、环境音（Ambient）和音效（SFX）三个独立的部分进行管理与配置",
   "author": {
     "name": "DreemurrStudio",
     "email": "3011090456@qq.com",
-    "url": "https://www.dreemurrstudio.com"
+    "url": "https://gitee.com/RoastDango"
   },
   "keywords": [
     "Music",
     "Audio",
-    "Sound Effect",
-    "BGM"
-  ]
+    "Sound",
+    "SFX",
+    "BGM",
+    "Ambient",
+    "Mixer"
+  ],
+  "dependencies": {
+    "com.dreemurrstudio.utilities": "1.0.0"
+  }
 }
