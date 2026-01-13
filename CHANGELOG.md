@@ -3,6 +3,12 @@
 > 此文件记录了该软件包所有重要的变更
 > 文件格式基于 [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) 更新日志规范，且此项目版本号遵循 [语义化版本](http://semver.org/spec/v2.0.0.html) 规范
 
+## [2.1.0] - 2025-1-13
+### 更改
+- **项目结构**: 将预制体、ScriptableObject 资产文件、音源文件夹移动到 `Assets` 目录下，并打包为 unitypackage 文件，方便用户根据项目需求进行导入并自定义修改
+- **`AnimationEvent_Audio`**: 脚本更名为 `AudioPlayCaller`
+
+
 ## [2.0.0] - 2025-12-25
 ### 新增
 - **音效系统 (`SFXManager`)**:

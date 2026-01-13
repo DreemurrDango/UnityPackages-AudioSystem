@@ -6,7 +6,7 @@ namespace DreemurrStudio.AudioSystem
     /// <summary>
     /// 播放音源相关的动画事件
     /// </summary>
-    public class AnimationEvent_Audio : MonoBehaviour
+    public class AudioPlayCaller : MonoBehaviour
     {
         /// <summary>
         /// 播放世界中音效

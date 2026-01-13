@@ -1,6 +1,6 @@
 ﻿{
   "name": "com.dreemurrstudio.audiosystem",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "displayName": "通用音频系统",
   "description": "为 Unity 项目提供了一套简单但全面清晰的音频解决方案，将音频播放划分为背景音乐（BGM）、环境音（Ambient）和音效（SFX）三个独立的部分进行管理与配置",
   "author": {
